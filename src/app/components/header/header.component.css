@@ -1,0 +1,8 @@
+header {
+  /* using a button that we want to move to one side, so use flex */
+  display: flex;
+  /* want everything to be spaced equally between */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
