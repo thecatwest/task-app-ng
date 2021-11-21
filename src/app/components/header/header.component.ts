@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Task Tracker';
+  showAddTask: boolean = true;
+  subscription!: Subscription;
   // runs whenever object/module is initialized
-  constructor() { }
+  constructor(private uiService: UiService) {
+    this.subscription = this.uiService.onToggle().subscribe((value) => (this.showAddTask = value));
+  }
 
   // life cycle method; utilized most often
   ngOnInit(): void {
@@ -16,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   // add header button click functionality here
   toggleAddTask() {
-    console.log("toggle");
+    this.uiService.toggleAddTask();
   }
 
 }
