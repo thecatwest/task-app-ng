@@ -30,4 +30,7 @@ export class TasksComponent implements OnInit {
   }
   // make sure to go to task.service.ts to update server for changes
 
+  addTask(task: Task) {
+    this.taskService.addTask(task).subscribe((task) => (this.tasks.push(task)));
+  }
 }
